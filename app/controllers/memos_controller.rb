@@ -1,35 +1,55 @@
 class MemosController < ApplicationController
+  before_action :set_target_memo, only: %i[edit update destroy]
 
   def index
     @memos = Memo.all
   end
 
   def new
-
+    @memo = Memo.new(flash[:memo])
   end
 
   def create
-    Memo.create(title: params[:memos][:title], body: params[:memos][:body], category_id: params[:memos][:category_id])
-    redirect_to root_path
+    memo = Memo.new(memo_params)
+    if memo.save
+      flash[:success] = "「#{memo.title}」のメモを作成しました"
+      redirect_to root_path
+    else
+      redirect_to new_memo_path, flash: {
+        memo: memo,
+        error_messages: memo.errors.full_messages
+      }
+    end
   end
 
-  def delete
-    memo = Memo.find(params[:id])
-    memo.destroy
-    redirect_to root_path
+  def destroy
+    @memo.destroy
+    redirect_to root_path, flash: { success: "「#{@memo.title}」のメモが削除されました" }
   end
 
   def edit
-    @memo = Memo.find(params[:id])
   end
 
   def update
-    memo = Memo.find(params[:id])
-    memo.title = params[:memos][:title]
-    memo.body = params[:memos][:body]
-    memo.category_id = params[:memos][:category_id]
-    memo.save
-    redirect_to root_path
+    if @memo.update(memo_params)
+      flash[:success] = "「#{@memo.title}」のメモを編集しました"
+      redirect_to root_path
+    else
+      redirect_to :back, flash: {
+        memo: @memo,
+        error_messages: @memo.errors.full_messages
+      }
+    end
+  end
+
+  private
+  # ストロングパラメータ
+  def memo_params
+    params.require(:memo).permit(:title, :body, :category_id)
+  end
+
+  def set_target_memo
+    @memo = Memo.find(params[:id])
   end
 
 end

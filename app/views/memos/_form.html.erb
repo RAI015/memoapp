@@ -1,0 +1,17 @@
+<%= render 'shared/error_messages' %>
+
+<%= form_with model: memo do |f| %>
+  <div class='form-group'>
+    <%= f.label :title, 'タイトル' %>
+    <%= f.text_field :title, class: 'form-control' %>
+  </div>
+  <div class='form-group'>
+    <%= f.label :body, '本文' %>
+    <%= f.text_field :body, class: 'form-control' %>
+  </div>
+  <div class='form-group'>
+    <%= f.label :category_id, 'カテゴリー' %>
+    <%= f.select :category_id, Category.all.map { |category| [category.name, category.id] }, {} , { class: 'form-control' } %>
+  </div>
+  <%= submit_tag '登録', class: 'btn btn-primary' %>
+<% end %>
