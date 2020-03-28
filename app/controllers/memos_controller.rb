@@ -35,8 +35,8 @@ class MemosController < ApplicationController
       flash[:success] = "「#{@memo.title}」のメモを編集しました"
       redirect_to root_path
     else
-      redirect_to :back, flash: {
-        memo: @memo,
+      redirect_back fallback_location: root_path, flash: {
+        user: @memo,
         error_messages: @memo.errors.full_messages
       }
     end

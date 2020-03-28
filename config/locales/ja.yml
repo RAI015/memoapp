@@ -3,14 +3,12 @@ ja:
     attributes:
       user:
         name: ユーザー名
+        email: メールアドレス
         password: パスワード
-        password_confirmation: パスワード（確認）
+        password_confirmation: 確認用パスワード
       memo:
         title: タイトル
         body: 本文
-      comment:
-        name: 名前
-        comment: コメント
   views:
     pagination:
       first: 最初

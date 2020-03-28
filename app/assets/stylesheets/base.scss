@@ -1,0 +1,31 @@
+/* body */
+body {
+  margin: 0;
+  display: flex;
+  flex-flow: column;
+  min-height: 100vh;
+}
+
+/* header */
+.navbar {
+  border-radius: 0px;
+}
+
+/* main */
+main {
+  background: #ffffff;
+  flex: 1;
+}
+
+/* footer */
+footer {
+  background: #272727;
+  color: #fff;
+  text-align: center;
+  padding: 10px 0;
+  &__item{
+    padding: 1rem;
+    margin-bottom: 0;
+  }
+}
+
