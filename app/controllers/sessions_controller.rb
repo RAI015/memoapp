@@ -9,7 +9,9 @@ class SessionsController < ApplicationController
       flash[:success] = 'ログインしました'
       redirect_to mypage_path
     else
-      redirect_back fallback_location: root_path
+      # flash[:success].now = "ログインに失敗しました"
+      render :new
+      # redirect_back fallback_location: root_path
       # パスワードが正しくありませんなど
     end
   end

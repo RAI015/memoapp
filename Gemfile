@@ -12,7 +12,7 @@ gem 'puma', '~> 3.11'
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 5.0'
 
-gem 'bootstrap-sass', '~>3.3.6'
+gem "bootstrap-sass", "~> 3.3.6"
 gem 'jquery-rails'
 gem 'jquery-ui-rails'
 
@@ -31,9 +31,8 @@ gem 'jbuilder', '~> 2.5'
 # gem 'redis', '~> 4.0'
 # Use ActiveModel has_secure_password
 gem 'bcrypt', '~> 3.1.7'
-
-# Use ActiveStorage variant
-# gem 'mini_magick', '~> 4.8'
+gem 'carrierwave', '~> 2.0'
+gem 'mini_magick', '~> 4.8'
 
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
@@ -45,6 +44,7 @@ gem 'rails-i18n'
 
 group :production do
   gem 'pg'
+  gem 'fog'
 end
 
 group :development, :test do
@@ -63,6 +63,8 @@ group :development do
   gem 'spring-watcher-listen', '~> 2.0.0'
   gem 'pry-byebug'
   gem 'annotate'
+  gem 'rubocop', require: false
+  gem 'rubocop-rails', require: false
 end
 
 group :test do

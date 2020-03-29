@@ -12,15 +12,12 @@
   <body>
     <%= render 'header' %>
     <main>
-      <div class="container">
-        <% flash.each do |message_type, message| %>
-          <% if message_type == 'success' %>
-            <div class="alert alert-<%= message_type %>"><%= message %></div>
-          <% end %>
+      <% flash.each do |message_type, message| %>
+        <% if message_type == 'success' %>
+          <div class="alert alert-<%= message_type %>"><%= message %></div>
         <% end %>
-
-        <%= yield %>
-      </div>
+      <% end %>
+      <%= yield %>
     </main>
     <%= render 'footer' %>
   </body>

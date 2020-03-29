@@ -1,21 +1,24 @@
 <%= render 'shared/error_messages' %>
 
-<h3>メモ 一覧</h3>
-<% @memos.each do |memo| %>
-  <div class="col-sm-4">
-    <div class="panel panel-warning">
-      <div class="panel-heading">
-        <h4 class="panel-title"><%= memo.title %></h4>
-        <p><%= memo.category.name %></p>
+<div class="container">
+  <h3>メモ 一覧</h3>
+  <% @memos.each do |memo| %>
+    <div class="col-sm-4">
+      <div class="panel panel-warning">
+        <div class="panel-heading">
+          <h4 class="panel-title"><%= memo.title %></h4>
+          <p><%= memo.category.name %></p>
 
-        <div class="buttons">
-          <%= link_to '', edit_memo_path(memo), class: 'glyphicon glyphicon-edit' %>
-          <%= link_to '', memo, class: 'glyphicon glyphicon-trash', method: :delete %>
+          <div class="buttons">
+            <%= link_to '', edit_memo_path(memo), class: 'glyphicon glyphicon-edit' %>
+            <%= link_to '', memo, class: 'glyphicon glyphicon-trash', method: :delete %>
+          </div>
+        </div>
+        <div class="panel-body">
+          <%= memo.body %>
+          <%= image_tag memo.picture.url if memo.picture? %>
         </div>
       </div>
-      <div class="panel-body">
-        <%= memo.body %>
-      </div>
     </div>
-  </div>
-<% end %>
+  <% end %>
+</div>

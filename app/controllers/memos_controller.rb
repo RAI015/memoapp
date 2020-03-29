@@ -45,7 +45,7 @@ class MemosController < ApplicationController
   private
   # ストロングパラメータ
   def memo_params
-    params.require(:memo).permit(:title, :body, :category_id)
+    params.require(:memo).permit(:title, :body, :category_id, :picture)
   end
 
   def set_target_memo
