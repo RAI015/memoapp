@@ -10,6 +10,7 @@ if Rails.env.production?
     }
     config.fog_directory     =  ENV['S3_BUCKET']
     config.fog_attributes = { cache_control: "public, max-age=#{365.days.to_i}" }
+    config.fog_public = false
   end
 
   # 日本語ファイル名の設定
