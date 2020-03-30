@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class MemosController < ApplicationController
   before_action :set_target_memo, only: %i[edit update destroy]
 
@@ -27,8 +29,7 @@ class MemosController < ApplicationController
     redirect_to root_path, flash: { success: "「#{@memo.title}」のメモが削除されました" }
   end
 
-  def edit
-  end
+  def edit; end
 
   def update
     if @memo.update(memo_params)
@@ -43,6 +44,7 @@ class MemosController < ApplicationController
   end
 
   private
+
   # ストロングパラメータ
   def memo_params
     params.require(:memo).permit(:title, :body, :category_id, :picture)
@@ -51,5 +53,4 @@ class MemosController < ApplicationController
   def set_target_memo
     @memo = Memo.find(params[:id])
   end
-
 end

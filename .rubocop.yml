@@ -1,7 +1,6 @@
 inherit_from:
   - .rubocop_todo.yml
 
-
 # 日本語でのコメントを許可
 AsciiComments:
   Enabled: false
@@ -31,6 +30,7 @@ Metrics/LineLength:
   Enabled: false
 
 AllCops:
+  TargetRubyVersion: 2.6.5
   Exclude:
     - db/schema.rb
     - config/unicorn.rb

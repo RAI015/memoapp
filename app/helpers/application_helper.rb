@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module ApplicationHelper
   def header_link_item(name, path)
     class_name = 'nav-item'

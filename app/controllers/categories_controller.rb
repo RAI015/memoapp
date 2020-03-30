@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class CategoriesController < ApplicationController
   def show
     @memos = Memo.where(category_id: params[:id])

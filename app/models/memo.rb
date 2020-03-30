@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 # == Schema Information
 #
 # Table name: memos
@@ -21,8 +23,6 @@ class Memo < ApplicationRecord
   private
 
   def picture_size
-    if picture.size > 5.megabytes
-      errors.add(:picture, 'ファイルサイズを5MB以下にしてください')
-    end
+    errors.add(:picture, 'ファイルサイズを5MB以下にしてください') if picture.size > 5.megabytes
   end
 end
